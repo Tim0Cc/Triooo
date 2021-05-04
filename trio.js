@@ -1,3 +1,5 @@
+// create Tiles Array
+
 const tilesArray = []
 
 function createTiles() {
@@ -16,5 +18,12 @@ function createTiles() {
 
 createTiles();
 
+// fill HTML table
+
 const table = document.querySelector("table");
-table.innerHTML = "Hello from Query";
+
+function fillHTML() {
+  table.innerHTML = "Hello from Query";
+}
+
+fillHTML();
