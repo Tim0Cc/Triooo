@@ -15,3 +15,6 @@ function createTiles() {
 }
 
 createTiles();
+
+const table = document.querySelector("table");
+table.innerHTML = "Hello from Query";
