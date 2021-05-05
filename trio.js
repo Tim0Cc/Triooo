@@ -40,16 +40,19 @@ const table = document.querySelector("table");
 
 let html = "";
 function fillHTML(a) {
-
   let td = "";
   let row = "";
-  for (i = 0; i <= a.length - 1; i++) {
-    td = "<td>" + a[i] + "</td>";
-    row = "<tr>" + td + "</tr>";
-    html =  html + row;
+  for (j = 0; j < 7; j++) {
+    let rowdata ="";
+    for (i = 0; i < 7; i++) {
+      td = "<td>" + a[0] + "</td>";
+      rowdata += td;
+      a = a.slice(1);
+    }
+    row = "<tr>" + rowdata + "</tr>";
+    html += row;
   }
-  return html;
 }
 fillHTML(shuffledArray);
-console.log(html);
+// console.log(html);
 table.innerHTML = html;
