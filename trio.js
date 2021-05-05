@@ -1,9 +1,37 @@
+// Events
+//
+
+// Setup / shuffle
+
+sbutton = document.querySelector(".shuffle");
+sbutton.addEventListener('click', function() {
+  createTiles();
+  shuffledArray = shuffle(tilesArray);
+  fillHTML(shuffledArray);
+  // console.log(html);
+  table.innerHTML = html;
+});
+
+
+// VARIABLES
+//
+
+const table = document.querySelector("table");
+
+let tilesArray = []
+let shuffledArray;
+let html;
+
+
+
+// CALLBACK FUNCTIONS
+//
+
 // create Tiles Array
 
-const tilesArray = []
-
 function createTiles() {
-  console.log(tilesArray);
+  // console.log(tilesArray);
+  tilesArray = []
   for (i=0; i<4; i++) {
     tilesArray.push("9")
   }
@@ -13,12 +41,7 @@ function createTiles() {
   for (i=0; i<6; i++) {
     tilesArray.push("2", "3", "4", "5", "6")
   }
-  console.log("tiles Array: " + tilesArray);
-  console.log("Number of Tiles: " + tilesArray.length);
-  
 }
-
-createTiles();
 
 // shuffle Tiles
 
@@ -30,16 +53,12 @@ function shuffle(a) {
   return a;
 }
 
-const shuffledArray = shuffle(tilesArray);
-console.log("shuffled Array: " + shuffledArray);
-console.log("Number of Tiles: " + shuffledArray.length);
 
 // fill HTML table
 
-const table = document.querySelector("table");
-
-let html = "";
 function fillHTML(a) {
+  table.innerHTML = "";
+  html = "";
   let td = "";
   let row = "";
   for (j = 0; j < 7; j++) {
@@ -53,6 +72,3 @@ function fillHTML(a) {
     html += row;
   }
 }
-fillHTML(shuffledArray);
-// console.log(html);
-table.innerHTML = html;
