@@ -31,6 +31,7 @@ nextButton.addEventListener('click', newNumber)
 let tilesArray = []
 let shuffledArray;
 let html;
+let c;
 
 
 
@@ -73,12 +74,28 @@ function fillHTML(a) {
   for (j = 0; j < 7; j++) {
     let rowdata ="";
     for (i = 0; i < 7; i++) {
-      td = "<td>" + a[0] + "</td>";
+      color();
+      // console.log(c);
+      td = "<td style=\"border-color:" + c + ";\"" + ">" + a[0] + "</td>";
+      console.log(td)
       rowdata += td;
       a = a.slice(1);
     }
     row = "<tr>" + rowdata + "</tr>";
     html += row;
+  }
+}
+
+// color of td border
+
+function color() {
+  var m = Math.floor((Math.random()*3)+1);
+  if (m == 1) {
+    c = "#ffa0a0";
+  } else if (m == 2) {
+    c = "#a0ffa0";
+  } else {
+    c = "#a0a0ff";
   }
 }
 

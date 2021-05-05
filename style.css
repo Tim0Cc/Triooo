@@ -1,0 +1,16 @@
+body {
+  text-align: center;
+}
+
+table {
+  width: 95vw;
+  margin: 2vh auto;
+}
+
+td {
+  background-color: blanchedalmond;
+  border: 4px solid;
+  border-radius: 4px;
+  width: 2vw;
+  height: 2vw;
+}
