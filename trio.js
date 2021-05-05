@@ -1,9 +1,15 @@
+// DOCUMENT VARIABLES
+//
+
+const sbutton = document.querySelector(".shuffle");
+const table = document.querySelector("table");
+const nextButton = document.querySelector(".next");
+
 // Events
 //
 
 // Setup / shuffle
 
-sbutton = document.querySelector(".shuffle");
 sbutton.addEventListener('click', function() {
   createTiles();
   shuffledArray = shuffle(tilesArray);
@@ -12,11 +18,15 @@ sbutton.addEventListener('click', function() {
   table.innerHTML = html;
 });
 
+// new / next Number
+
+nextButton.addEventListener('click', newNumber) 
+
 
 // VARIABLES
 //
 
-const table = document.querySelector("table");
+// const table = document.querySelector("table");
 
 let tilesArray = []
 let shuffledArray;
@@ -53,7 +63,6 @@ function shuffle(a) {
   return a;
 }
 
-
 // fill HTML table
 
 function fillHTML(a) {
@@ -71,4 +80,18 @@ function fillHTML(a) {
     row = "<tr>" + rowdata + "</tr>";
     html += row;
   }
+}
+
+let nElement = "";
+
+function newNumber() {
+  if (nElement != "") {
+    nElement = "";
+  }
+  let n = Math.floor((Math.random() * 50)+1);
+  nElement = nextButton.insertAdjacentHTML('afterend', "<h3>" + n + "</h3>");
+}
+
+function say() {
+  console.log('hi');
 }
