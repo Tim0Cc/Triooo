@@ -14,8 +14,8 @@ sbutton.addEventListener('click', function() {
   createTiles();
   shuffledArray = shuffle(tilesArray);
   fillHTML(shuffledArray);
-  // console.log(html);
   table.innerHTML = html;
+  select();
 });
 
 // new / next Number
@@ -32,6 +32,9 @@ let tilesArray = []
 let shuffledArray;
 let html;
 let c;
+let tds;
+let selectedTiles;
+let n;
 
 
 
@@ -75,15 +78,30 @@ function fillHTML(a) {
     let rowdata ="";
     for (i = 0; i < 7; i++) {
       color();
-      // console.log(c);
       td = "<td style=\"border-color:" + c + ";\"" + ">" + a[0] + "</td>";
-      console.log(td)
       rowdata += td;
       a = a.slice(1);
     }
     row = "<tr>" + rowdata + "</tr>";
     html += row;
   }
+}
+
+
+let nElement = "";
+
+// create a new number
+
+function newNumber() {
+  if (nElement != "") {
+    nElement = "";
+  }
+  n = Math.floor((Math.random() * 50)+1);
+  nElement = nextButton.insertAdjacentHTML('afterend', "<h3>" + n + "</h3>");
+}
+
+function say() {
+  console.log('hi');
 }
 
 // color of td border
@@ -99,16 +117,31 @@ function color() {
   }
 }
 
-let nElement = "";
+// select tile
 
-function newNumber() {
-  if (nElement != "") {
-    nElement = "";
-  }
-  let n = Math.floor((Math.random() * 50)+1);
-  nElement = nextButton.insertAdjacentHTML('afterend', "<h3>" + n + "</h3>");
+function select() {
+  selectedTiles = [];
+  tds = document.querySelectorAll("td");
+  tds.forEach(e => e.addEventListener('click', function() {
+    selectedTiles.push(e.textContent);
+    if (selectedTiles.length == 3) {
+      check(selectedTiles, n);
+    }
+  }));
+  console.log(selectedTiles);
 }
 
-function say() {
-  console.log('hi');
+// check Match
+
+function check(s, p) {
+  s[0] = parseInt(s[0]);
+  s[1] = parseInt(s[1]);
+  s[2] = parseInt(s[2]);
+  sum = (s[0] * s[1] + s[2]);
+  sub = (s[0] * s[1] - s[2]);
+  if ( sum == p || sub == p ) {
+    console.log('match');
+  } else {
+    console.log('no match');
+  }
 }
