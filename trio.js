@@ -38,12 +38,12 @@ console.log("Number of Tiles: " + shuffledArray.length);
 
 const table = document.querySelector("table");
 
+let html = "";
 function fillHTML(a) {
 
   let td = "";
   let row = "";
-  let html = "";
-  for (i = a.lengt - 1; i > 0; i--) {
+  for (i = 0; i <= a.length - 1; i++) {
     td = "<td>" + a[i] + "</td>";
     row = "<tr>" + td + "</tr>";
     html =  html + row;
